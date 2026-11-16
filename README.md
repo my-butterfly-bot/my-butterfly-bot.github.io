@@ -10,6 +10,8 @@
 - `index.html`：页面文案与结构（姓名、简介、项目卡片、联系方式）
 - `style.css`：版式、配色与响应式布局，并已用 `prefers-color-scheme` 适配深色模式
 - `script.js`：很少量的交互（滚动时给顶栏加一条细边）
+- `assets/avatar.jpg`：站点头像（约 400×400），用在开场区和顶栏标志
+- `favicon.ico`、`favicon-32x32.png`、`apple-touch-icon.png`：由头像面部圆形裁切而成的站点图标
 
 ## 如何修改内容
 
