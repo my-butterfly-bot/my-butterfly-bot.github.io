@@ -154,7 +154,8 @@ code {
 }
 
 .nav a:hover,
-.nav a:focus-visible {
+.nav a:focus-visible,
+.nav a[aria-current="page"] {
   color: var(--ink);
 }
 
@@ -476,7 +477,11 @@ h3 a:focus-visible {
   }
 
   .nav {
-    gap: 0.95rem;
+    gap: 0.7rem;
+  }
+
+  .nav a {
+    font-size: 0.88rem;
   }
 
   .site-footer {
@@ -493,4 +498,153 @@ h3 a:focus-visible {
   .site-header {
     transition: none;
   }
+}
+
+/* Flight log */
+
+.log-hero {
+  max-width: 48rem;
+  padding: 10vh 0 4rem;
+}
+
+.log-index-section {
+  max-width: 48rem;
+}
+
+.log-card-list {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.log-card {
+  padding: 1.4rem 1.35rem 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.log-card time,
+.log-entry-head time {
+  display: block;
+  margin: 0 0 0.55rem;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+.log-card h3,
+.log-card h2 {
+  margin: 0 0 0.55rem;
+}
+
+.log-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.log-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  padding: 0;
+  margin: 0.9rem 0 0;
+}
+
+.log-tags li {
+  display: inline-block;
+  padding: 0.16rem 0.55rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.log-more {
+  margin: 1.4rem 0 0;
+}
+
+.log-entry {
+  max-width: 44rem;
+  padding: 8vh 0 3rem;
+}
+
+.log-entry-head {
+  margin-bottom: 2.2rem;
+}
+
+.log-entry-head .eyebrow a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.log-entry-head .eyebrow a:hover,
+.log-entry-head .eyebrow a:focus-visible {
+  color: var(--accent);
+}
+
+.log-entry-head h1 {
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  margin: 0 0 0.8rem;
+  font-family: "Noto Serif SC", "Instrument Serif", serif;
+}
+
+.log-entry-head time {
+  margin-bottom: 0.2rem;
+}
+
+.log-body {
+  max-width: 40rem;
+  color: var(--muted);
+}
+
+.log-body p {
+  margin: 0 0 1.1rem;
+}
+
+.log-body p:last-child {
+  margin-bottom: 0;
+}
+
+.log-adjacent-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--line);
+}
+
+.log-adjacent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  max-width: 45%;
+  color: var(--ink);
+  text-decoration: none;
+  font-family: "Noto Serif SC", "Instrument Serif", serif;
+}
+
+.log-adjacent:last-child {
+  text-align: right;
+  margin-left: auto;
+}
+
+.log-adjacent span {
+  color: var(--muted);
+  font-family: "Noto Sans SC", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.log-adjacent:hover,
+.log-adjacent:focus-visible {
+  color: var(--accent);
 }
