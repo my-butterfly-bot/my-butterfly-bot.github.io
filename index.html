@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Rainy Summer 的个人主页。A personal homepage for Rainy Summer.">
+  <title>Rainy Summer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="logo" href="#top">RS</a>
+    <nav class="nav" aria-label="页面导航">
+      <a href="#about">关于</a>
+      <a href="#projects">项目</a>
+      <a href="#contact">联系</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="开场">
+      <p class="eyebrow">个人主页 · Personal homepage</p>
+      <h1>Rainy Summer</h1>
+      <p class="tagline">在雨声与盛夏之间<br><span lang="en">Between rain and summer</span></p>
+      <a class="scroll-hint" href="#about">向下看看</a>
+    </section>
+
+    <section id="about" class="section">
+      <div class="section-head">
+        <p class="eyebrow">关于 · About</p>
+        <h2>一份可以慢慢填满的页面</h2>
+      </div>
+      <div class="prose">
+        <p>你好，我是 Rainy Summer。这里是个人主页的起点，用来介绍自己、放置作品，并留下一个联系入口。</p>
+        <p>当前的简介和项目卡片都是占位内容，方便之后直接替换成真实的文字和链接。先把结构摆好，再一点点写进去。</p>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="section-head">
+        <p class="eyebrow">项目 · Projects</p>
+        <h2>之后会放在这里的作品</h2>
+      </div>
+      <ul class="project-grid">
+        <li class="project-card">
+          <p class="badge">项目示例</p>
+          <h3>项目示例 01</h3>
+          <p>在这里放上第一个项目的名称、一句话介绍，以及指向仓库或演示页面的链接。</p>
+        </li>
+        <li class="project-card">
+          <p class="badge">项目示例</p>
+          <h3>项目示例 02</h3>
+          <p>第二个占位卡片。替换标题与描述后，它就会变成你真正想展示的作品。</p>
+        </li>
+        <li class="project-card">
+          <p class="badge">项目示例</p>
+          <h3>项目示例 03</h3>
+          <p>需要增减卡片时，直接编辑 <code>index.html</code> 里的这一组即可，不必经过构建步骤。</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="section-head">
+        <p class="eyebrow">联系 · Contact</p>
+        <h2>从 GitHub 找到我</h2>
+      </div>
+      <p class="prose">如果你想看看代码或后续更新，可以从下面的 GitHub 主页进入。</p>
+      <a class="github-link" href="https://github.com/my-butterfly-bot" rel="noopener noreferrer">
+        <svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M12 2C6.477 2 2 6.586 2 12.253c0 4.527 2.865 8.367 6.839 9.722.5.094.683-.222.683-.486 0-.24-.009-.875-.014-1.717-2.782.62-3.369-1.37-3.369-1.37-.455-1.177-1.11-1.49-1.11-1.49-.908-.638.069-.625.069-.625 1.004.072 1.532 1.055 1.532 1.055.892 1.566 2.341 1.114 2.91.852.091-.663.35-1.114.636-1.37-2.22-.259-4.555-1.137-4.555-5.062 0-1.118.39-2.033 1.03-2.75-.103-.258-.447-1.302.098-2.714 0 0 .84-.275 2.75 1.05A9.34 9.34 0 0 1 12 6.844a9.34 9.34 0 0 1 2.504.345c1.909-1.325 2.748-1.05 2.748-1.05.546 1.412.202 2.456.1 2.714.64.717 1.028 1.632 1.028 2.75 0 3.935-2.339 4.8-4.566 5.054.359.318.679.944.679 1.904 0 1.374-.012 2.481-.012 2.82 0 .266.18.585.688.485A10.02 10.02 0 0 0 22 12.253C22 6.586 17.523 2 12 2Z"/>
+        </svg>
+        github.com/my-butterfly-bot
+      </a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Rainy Summer</p>
+    <p>托管于 <a href="https://pages.github.com/" rel="noopener noreferrer">GitHub Pages</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
