@@ -26,6 +26,8 @@ from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from site_chrome import wrap_page as wrap_site_page
+
 ROOT = Path(__file__).resolve().parent.parent
 ENTRIES_DIR = ROOT / "log" / "entries"
 LOG_DIR = ROOT / "log"
@@ -190,72 +192,15 @@ def rel(from_log: bool, target: str) -> str:
     return target if from_log else f"log/{target}" if not target.startswith("http") else target
 
 
-def render_head(title: str, description: str, *, prefix: str, feed_href: str) -> str:
-    desc = html.escape(description)
-    return f"""  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{desc}">
-  <title>{html.escape(title)}</title>
-  <link rel="icon" href="{prefix}favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="{prefix}favicon-32x32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="{prefix}apple-touch-icon.png">
-  <link rel="alternate" type="application/rss+xml" title="蝴蝶日志" href="{feed_href}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{prefix}style.css">"""
-
-
-def render_header(*, prefix: str, current: str) -> str:
-    def item(href: str, label: str, key: str) -> str:
-        current_attr = ' aria-current="page"' if key == current else ""
-        return f'      <a href="{href}"{current_attr}>{label}</a>'
-
-    home = prefix if prefix else "./"
-    log_href = f"{prefix}log/" if prefix != "../" else "./"
-    return f"""  <div class="ambient" aria-hidden="true"></div>
-
-  <header class="site-header">
-    <a class="logo" href="{home}" aria-label="ButterFly 首页">
-      <img src="{prefix}assets/avatar.jpg" alt="" width="40" height="40">
-    </a>
-    <nav class="nav" aria-label="页面导航">
-{item(f"{prefix}#about", "关于", "about")}
-{item(f"{prefix}#skills", "擅长", "skills")}
-{item(f"{prefix}#projects", "项目", "projects")}
-{item(log_href, "日志", "log")}
-{item(f"{prefix}#contact", "联系", "contact")}
-    </nav>
-  </header>"""
-
-
-def render_footer() -> str:
-    return """  <footer class="site-footer">
-    <p>ButterFly · 和朋友一起做的小站</p>
-    <p>托管于 <a href="https://pages.github.com/" rel="noopener noreferrer">GitHub Pages</a></p>
-  </footer>
-
-  <script src="PLACEHOLDER_JS"></script>"""
-
-
 def wrap_page(title: str, description: str, main: str, *, prefix: str, current: str, feed_href: str) -> str:
-    footer = render_footer().replace("PLACEHOLDER_JS", f"{prefix}script.js")
-    return f"""<!DOCTYPE html>
-<html lang="zh-Hans">
-<head>
-{render_head(title, description, prefix=prefix, feed_href=feed_href)}
-</head>
-<body>
-{render_header(prefix=prefix, current=current)}
-
-  <main id="top">
-{main}
-  </main>
-
-{footer}
-</body>
-</html>
-"""
+    return wrap_site_page(
+        title,
+        description,
+        main,
+        prefix=prefix,
+        current=current,
+        feeds=[("蝴蝶日志", feed_href)],
+    )
 
 
 def render_tags(tags: list[str]) -> str:

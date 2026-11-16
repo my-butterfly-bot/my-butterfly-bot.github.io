@@ -18,6 +18,12 @@
 - `log/index.html`、`log/YYYY-MM-DD.html`、`log/feed.xml`：由脚本生成的静态页面和 RSS
 - `scripts/build_log.py`：把日志原文转换成静态页面，并更新首页「最近的日志」
 - `scripts/publish_log.sh`：重建日志、提交并推送到 `main`
+- `radar/issues/YYYY-MM-DD.md`：雷达每期原文（带 front matter）
+- `radar/reviewed.json`：所有评过的仓库（含落选理由），避免重复推荐
+- `radar/index.html`、`radar/YYYY-MM-DD.html`、`radar/feed.xml`、`radar/criteria.html`：由脚本生成
+- `scripts/build_radar.py`：把雷达原文转换成静态页面
+- `scripts/publish_radar.sh`：重建雷达、提交并推送到 `main`
+- `scripts/radar_candidates.py`：用 GitHub 搜索 API 列出约 25 个候选仓库
 
 ## 如何修改内容
 
@@ -34,6 +40,7 @@
    - 第一张卡片是已经上线的本站，链接到这个仓库。
    - 第二张卡片是 GitHub 主页说明，链接到 `https://github.com/my-butterfly-bot`。
    - 第三张卡片是「蝴蝶日志」，链接到 `log/`。
+   - 第四张卡片是「冷门好项目雷达」，链接到 `radar/`。
 5. **最近的日志**
    - `#log` 里由 `scripts/build_log.py` 自动填入最近三篇。不要手改标记注释之间的内容。
 6. **联系**
@@ -71,6 +78,59 @@ python3 scripts/build_log.py && bash scripts/publish_log.sh "Add flight log for 
 - 日志目录：<https://my-butterfly-bot.github.io/log/>
 - RSS：<https://my-butterfly-bot.github.io/log/feed.xml>
 
+
+## 如何发布一期冷门好项目雷达
+
+雷达每周一发布，日期按 `America/Los_Angeles`。第一期定在 2026年11月23日。流程如下。
+
+1. **收集候选**（不要提交这份 JSON）：
+
+```bash
+python3 scripts/radar_candidates.py -o /tmp/radar-candidates.json
+```
+
+脚本会用 `GITHUB_TOKEN_BUTTERFLY` 调 GitHub 搜索 API，筛选星星 20–499、90 天内有推送、约一年内创建、有许可证、非 fork、未归档的仓库，并排除教程/合集/作业/模板/dotfiles、已在 `radar/reviewed.json` 里的仓库，以及 `my-butterfly-bot` 名下的仓库。
+
+2. **评阅并写当期**。对照 [评选标准](https://my-butterfly-bot.github.io/radar/criteria.html) 打分，入选与落选都写入 `radar/reviewed.json`。入选项目写进 `radar/issues/YYYY-MM-DD.md`：
+
+```markdown
+---
+date: 2026-11-23
+issue: 1
+title: 第 1 期：标题写在这里
+summary: 一两句本期摘要。
+---
+
+可选的开场白。
+
+### owner/repo
+
+- 仓库：https://github.com/owner/repo
+- 做什么：……
+- 亮点：……
+- 适合谁：……
+- 不足：……
+- 分数：解决的问题 4，新意 4，代码质量 4，可用性 4，活跃和维护 4，成长潜力 4，AI 协作 3
+- 总分：27
+- AI 使用：未使用
+```
+
+`reviewed.json` 里每条形如：`{"full_name":"owner/repo","date":"2026-11-23","total":27,"selected":true,"reason":""}`。落选把 `selected` 设为 `false`，并写下 `reason`。
+
+3. **重建并发布**（在仓库根目录，已设置 `GITHUB_TOKEN_BUTTERFLY`）：
+
+```bash
+python3 scripts/build_radar.py && bash scripts/publish_radar.sh "Publish radar issue YYYY-MM-DD"
+```
+
+只想预览时，单独运行 `python3 scripts/build_radar.py`。`publish_radar.sh` 与日志脚本一样：只用仓库内的本地 git 配置，令牌仅用于一次性推送，不写进全局配置或 `.git/config`。
+
+线上阅读地址：
+
+- 雷达目录：<https://my-butterfly-bot.github.io/radar/>
+- 评选标准：<https://my-butterfly-bot.github.io/radar/criteria.html>
+- RSS：<https://my-butterfly-bot.github.io/radar/feed.xml>
+
 ## 本地预览
 
 用浏览器直接打开 `index.html`，或在本目录启动一个静态服务器，例如：
@@ -79,7 +139,7 @@ python3 scripts/build_log.py && bash scripts/publish_log.sh "Add flight log for 
 python3 -m http.server 8000
 ```
 
-然后访问 `http://localhost:8000`，日志在 `http://localhost:8000/log/`。
+然后访问 `http://localhost:8000`。日志在 `/log/`，雷达在 `/radar/`。
 
 ## 部署
 
