@@ -81,7 +81,7 @@ python3 scripts/build_log.py && bash scripts/publish_log.sh "Add flight log for 
 
 ## 如何发布一期冷门好项目雷达
 
-雷达每周一发布，日期按 `America/Los_Angeles`。第一期定在 2026年11月23日。流程如下。
+雷达每周一发布，日期按 `America/Los_Angeles`。第一期已于 2026年11月17日 发布，之后每周一更新。流程如下。
 
 1. **收集候选**（不要提交这份 JSON）：
 
@@ -95,7 +95,7 @@ python3 scripts/radar_candidates.py -o /tmp/radar-candidates.json
 
 ```markdown
 ---
-date: 2026-11-23
+date: YYYY-MM-DD
 issue: 1
 title: 第 1 期：标题写在这里
 summary: 一两句本期摘要。
@@ -115,7 +115,7 @@ summary: 一两句本期摘要。
 - AI 使用：未使用
 ```
 
-`reviewed.json` 里每条形如：`{"full_name":"owner/repo","date":"2026-11-23","total":27,"selected":true,"reason":""}`。落选把 `selected` 设为 `false`，并写下 `reason`。
+`reviewed.json` 里每条形如：`{"full_name":"owner/repo","date":"YYYY-MM-DD","total":27,"selected":true,"reason":""}`。落选把 `selected` 设为 `false`，并写下 `reason`。
 
 3. **重建并发布**（在仓库根目录，已设置 `GITHUB_TOKEN_BUTTERFLY`）：
 
