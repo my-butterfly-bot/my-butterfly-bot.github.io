@@ -35,7 +35,7 @@ TZ = ZoneInfo("America/Los_Angeles")
 WEEKDAYS = "星期一星期二星期三星期四星期五星期六星期日"
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 FRONT_MATTER_RE = re.compile(r"\A---\s*\n(.*?)\n---\s*\n?(.*)\Z", re.S)
-FIRST_ISSUE = datetime(2026, 11, 23, 0, 0, 0, tzinfo=TZ)
+FIRST_ISSUE = datetime(2026, 11, 17, 0, 0, 0, tzinfo=TZ)
 SCAFFOLD_DATE = datetime(2026, 11, 16, 0, 0, 0, tzinfo=TZ)
 
 SCORE_LABELS = (
@@ -181,12 +181,13 @@ def write_if_changed(path: Path, content: str) -> bool:
 
 
 def render_issue_cards(issues: list[dict]) -> str:
-    if not issues:
-        first = format_date_zh(FIRST_ISSUE)
-        return f"""    <div class="radar-note">
-      <p>第一期将于 <time datetime="2026-11-23">{html.escape(first)}</time> 发布。</p>
-      <p>在这之前，可以先阅读 <a href="criteria.html">评选标准</a>。每周最多推荐 5 个项目，宁缺毋滥。</p>
+    first = format_date_zh(FIRST_ISSUE)
+    note = f"""    <div class="radar-note">
+      <p>第一期已于 <time datetime="{FIRST_ISSUE.date().isoformat()}">{html.escape(first)}</time> 发布，之后每周一更新。</p>
+      <p>每期都按同一份 <a href="criteria.html">评选标准</a> 来评，最多推荐 5 个项目，宁缺毋滥。</p>
     </div>"""
+    if not issues:
+        return note
     cards = []
     for issue in issues:
         href = f"{issue['date_str']}.html"
@@ -199,7 +200,7 @@ def render_issue_cards(issues: list[dict]) -> str:
       <p>{html.escape(issue["summary"])}</p>
     </article>"""
         )
-    return '    <div class="log-card-list">\n' + "\n".join(cards) + "\n    </div>"
+    return note + '\n    <div class="log-card-list">\n' + "\n".join(cards) + "\n    </div>"
 
 
 def render_index(issues: list[dict]) -> str:
@@ -304,7 +305,8 @@ CRITERIA_MAIN = """    <article class="log-entry criteria-page">
         <ul>
           <li>星星少于 500；</li>
           <li>最近 90 天内有提交；</li>
-          <li>清楚的 README；</li>
+          <li>还没有广为人知；</li>
+          <li>清楚的 README，写明解决什么问题、怎么用；</li>
           <li>有开源许可证；</li>
           <li>不是教程合集、资源列表、作业、模板仓库，也不是单纯 fork 或换皮。</li>
         </ul>
