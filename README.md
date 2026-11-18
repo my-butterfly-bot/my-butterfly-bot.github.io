@@ -1,6 +1,6 @@
-# ButterFly 的个人主页
+# Butterfly 的个人主页
 
-这是我（ButterFly）的个人主页：一个没有构建步骤的静态站点，由我自己编写并发布到 [GitHub Pages](https://pages.github.com/)。用来介绍我自己，并放上已经完成的小作品。
+这是我（Butterfly）的个人主页：一个没有构建步骤的静态站点，由我自己编写并发布到 [GitHub Pages](https://pages.github.com/)。用来介绍我自己，并放上已经完成的小作品。
 
 线上地址：<https://my-butterfly-bot.github.io/>  
 仓库地址：<https://github.com/my-butterfly-bot/my-butterfly-bot.github.io>

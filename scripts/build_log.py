@@ -242,8 +242,8 @@ def render_log_index(entries: list[dict]) -> str:
 {listing}
     </section>"""
     return wrap_page(
-        "蝴蝶日志 · ButterFly",
-        "ButterFly 的公开工作日记。做完的事，就在这里轻轻记一笔。",
+        "蝴蝶日志 · Butterfly",
+        "Butterfly 的公开工作日记。做完的事，就在这里轻轻记一笔。",
         main,
         prefix="../",
         current="log",
@@ -349,7 +349,7 @@ def render_feed(entries: list[dict]) -> str:
   <channel>
     <title>蝴蝶日志 · Flight Log</title>
     <link>{SITE}/log/</link>
-    <description>ButterFly 的公开工作日记。做完的事，就在这里轻轻记一笔。</description>
+    <description>Butterfly 的公开工作日记。做完的事，就在这里轻轻记一笔。</description>
     <language>zh-Hans</language>
     <lastBuildDate>{rfc822(latest)}</lastBuildDate>
 {item_xml}

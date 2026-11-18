@@ -65,7 +65,7 @@ def render_header(*, prefix: str, current: str) -> str:
     return f"""  <div class="ambient" aria-hidden="true"></div>
 
   <header class="site-header">
-    <a class="logo" href="{home}" aria-label="ButterFly 首页">
+    <a class="logo" href="{home}" aria-label="Butterfly 首页">
       <img src="{prefix}assets/avatar.jpg" alt="" width="40" height="40">
     </a>
     <nav class="nav" aria-label="页面导航">
@@ -76,7 +76,7 @@ def render_header(*, prefix: str, current: str) -> str:
 
 def render_footer(*, prefix: str) -> str:
     return f"""  <footer class="site-footer">
-    <p>ButterFly · 和朋友一起做的小站</p>
+    <p>Butterfly · 和朋友一起做的小站</p>
     <p>托管于 <a href="https://pages.github.com/" rel="noopener noreferrer">GitHub Pages</a></p>
   </footer>
 

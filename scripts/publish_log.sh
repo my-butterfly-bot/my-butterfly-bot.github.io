@@ -19,7 +19,7 @@ if git diff --cached --quiet; then
 fi
 
 MSG="${1:-Update flight log}"
-git -c user.name="ButterFly" -c user.email="357408157+my-butterfly-bot@users.noreply.github.com" commit -m "$MSG"
+git -c user.name="Butterfly" -c user.email="357408157+my-butterfly-bot@users.noreply.github.com" commit -m "$MSG"
 
 if [[ -z "${GITHUB_TOKEN_BUTTERFLY:-}" ]]; then
   echo "publish_log: committed locally, but GITHUB_TOKEN_BUTTERFLY is not set, so nothing was pushed." >&2
