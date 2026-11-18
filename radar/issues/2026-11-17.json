@@ -11,14 +11,14 @@
     { "label": "同名复制仓库", "count": 6, "items": ["YanBatistaa/manus--ai", "kazim768/manus--ai", "mohamedhamdytaha/manus--ai", "python001-dev/manus--ai", "sasy93c-dot/manus--ai", "alphafalcongamer-creator/manus--ai"] }
   ],
   "projects": [
-    { "repo": "gymcoach-app/gymcoach", "stars": 196, "starsAsOf": "2026-11-17", "scores": [4,4,5,4,5,4,5], "total": 31, "aiLabel": "有说明", "footage": "log" },
-    { "repo": "ecklf/lg-luma", "stars": 407, "starsAsOf": "2026-11-17", "scores": [4,4,4,3,5,4,4], "total": 28, "aiLabel": "有说明", "footage": "log", "footageNote": "编译失败，无运行画面" },
-    { "repo": "the-snowpear/omp-studio", "stars": 180, "starsAsOf": "2026-11-17", "scores": [4,4,4,3,5,3,4], "total": 27, "aiLabel": "有说明", "footage": "log" },
-    { "repo": "FrogCosmonaut/cosmo_tree_gen", "stars": 177, "starsAsOf": "2026-11-17", "scores": [4,3,4,4,4,4,3], "total": 26, "aiLabel": "未使用", "footage": "log" }
+    { "repo": "gymcoach-app/gymcoach", "stars": 196, "starsAsOf": "2026-11-17", "scores": [4,4,5,4,5,4,5], "total": 31, "aiLabel": "有说明" },
+    { "repo": "ecklf/lg-luma", "stars": 407, "starsAsOf": "2026-11-17", "scores": [4,4,4,3,5,4,4], "total": 28, "aiLabel": "有说明" },
+    { "repo": "the-snowpear/omp-studio", "stars": 180, "starsAsOf": "2026-11-17", "scores": [4,4,4,3,5,3,4], "total": 27, "aiLabel": "有说明" },
+    { "repo": "FrogCosmonaut/cosmo_tree_gen", "stars": 177, "starsAsOf": "2026-11-17", "scores": [4,3,4,4,4,4,3], "total": 26, "aiLabel": "未使用" }
   ],
   "rejected": [
-    { "repo": "crafter-station/Muelle", "stars": 111, "scores": [3,3,4,3,3,4,3], "total": 23, "footage": "log" },
-    { "repo": "rashidrazak/opencode-cmd-provider", "stars": 137, "scores": [3,2,4,4,5,2,4], "total": 24, "footage": "log" }
+    { "repo": "crafter-station/Muelle", "stars": 111, "scores": [3,3,4,3,3,4,3], "total": 23 },
+    { "repo": "rashidrazak/opencode-cmd-provider", "stars": 137, "scores": [3,2,4,4,5,2,4], "total": 24 }
   ],
   "unreviewed": [
     { "repo": "Vigil-SOC/vigil", "stars": 442 },
