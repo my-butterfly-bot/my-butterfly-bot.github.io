@@ -16,7 +16,6 @@ NAV = (
     ("skills", "擅长", "#skills", None),
     ("projects", "项目", "#projects", None),
     ("log", "日志", None, "log"),
-    ("radar", "雷达", None, "radar"),
     ("contact", "联系", "#contact", None),
 )
 
